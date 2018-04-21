@@ -39,3 +39,32 @@ By default - the app has one layout file, but can have multiple layout files.
 
 * http://materializecss.com/
 * Referencing CSS from http://materializecss.com/getting-started.html
+
+### MVC
+
+* web/controllers
+* web/models
+* web/views
+* web/router.ex
+
+`request -> router -> controller` 
+
+Whats happening (example - `page`):
+
+1. When Phoenix starts, it looks in the views folder and looks up the name of the module `Discuss.PageView` and sees `Page` view
+2. Phoenix then looks in templates folder and try to find a folder called `page`
+3. Phoenix then takes all the files in the `page` template folder and add this as a function to the `Page View`. In this case in the `render` function (see `PageController`)
+
+Name of - views, templates, models, controllers are linked
+
+* Controller: `controllers/PageController.ex`
+* Templates: `tempaltes/page`
+* View: `views/page_view.ex`
+* Models
+
+Try this in `iex -S mix phx.server`
+
+```
+Discuss.PageView.render("index.html")
+```
+
