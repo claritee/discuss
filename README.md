@@ -68,3 +68,12 @@ Try this in `iex -S mix phx.server`
 Discuss.PageView.render("index.html")
 ```
 
+### Migrations
+
+```
+mix ecto.gen.migration add_topics
+```
+
+* creating priv/repo/migrations
+* creating priv/repo/migrations/datetimestamp_add_topics.exs
+
