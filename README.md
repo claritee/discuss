@@ -22,6 +22,12 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 ## Notes
 
+### Add new phoenix project
+
+```
+mix phoenix.new discuss
+```
+
 ### DB details
 
 See `dev.exs` - the details can be changed to not use default `postgres` user
@@ -70,6 +76,8 @@ Discuss.PageView.render("index.html")
 
 ### Migrations
 
+Create:
+
 ```
 mix ecto.gen.migration add_topics
 ```
@@ -77,3 +85,30 @@ mix ecto.gen.migration add_topics
 * creating priv/repo/migrations
 * creating priv/repo/migrations/datetimestamp_add_topics.exs
 
+Add:
+
+```
+mix ecto.migrate
+```
+
+Check DB:
+
+```
+psql -d discuss_dev
+```
+
+```
+discuss_dev=# \dt
+               List of relations
+ Schema |       Name        | Type  |  Owner
+--------+-------------------+-------+----------
+ public | schema_migrations | table | postgres
+ public | topics            | table | postgres
+(2 rows)
+```
+
+To rollback a migration
+
+```
+mix ecto.rollback
+```
