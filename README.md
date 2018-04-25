@@ -202,3 +202,15 @@ SELECT t0."id", t0."title" FROM "topics" AS t0 []
 #### CSS
 
 `/static/css` - all files here get included on every view
+
+### Flash messages
+
+```
+|> put_flash(:info, "Topic Created")
+```
+
+### Redirects
+
+```
+|> redirect(to: topic_path(conn, :index))
+```
