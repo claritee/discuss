@@ -140,3 +140,11 @@ iex(3)> Discuss.Topic.changeset(struct, params)
 #Ecto.Changeset<action: nil, changes: %{title: "blah"}, errors: [],
  data: #Discuss.Topic<>, valid?: true>
 ````
+
+Handling Form Input
+
+```
+%{"_csrf_token" => "xxx",
+  "_utf8" => "✓", "topic" => %{"title" => "dddd"}}
+```
+^ Need to use pattern matching to access the params for "topic"
