@@ -225,3 +225,11 @@ SELECT t0."id", t0."title" FROM "topics" AS t0 []
 ```
 <%= link to: topic_path(@conn, :new), class: "xxx" do %>
 ```
+
+### Routes
+
+Namespaces everything to `topics` and default routes
+
+```
+resources "/topics", TopicController
+```
