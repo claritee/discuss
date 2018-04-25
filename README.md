@@ -159,3 +159,20 @@ mix phoenix.routes is deprecated. Use phx.routes instead.
 topic_path  GET   /topics/new  Discuss.TopicController :new
 topic_path  POST  /topics      Discuss.TopicController :create
 ```
+
+#### Ecto
+
+```
+[info] POST /topics
+[debug] Processing with Discuss.TopicController.create/2
+  Parameters: %{"_csrf_token" => "xxx", "_utf8" => "✓", "topic" => %{"title" => "000"}}
+  Pipelines: [:browser]
+[debug] QUERY OK db=2.1ms
+INSERT INTO "topics" ("title") VALUES ($1) RETURNING "id" ["000"]
+```
+
+Record:
+```
+%Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:loaded, "topics">, id: 3,
+ title: "000"}
+```
