@@ -178,6 +178,25 @@ Record:
  title: "000"}
 ```
 
+Get Records:
+
+```
+Discuss.Repo.all(Discuss.Topic)
+[debug] QUERY OK source="topics" db=2.1ms decode=4.8ms
+SELECT t0."id", t0."title" FROM "topics" AS t0 []
+[%Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:loaded, "topics">, id: 1,
+  title: "123"},
+ %Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:loaded, "topics">, id: 2,
+  title: "000"},
+ %Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:loaded, "topics">, id: 3,
+  title: "000"},
+ %Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:loaded, "topics">, id: 4,
+  title: "000"},
+ %Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:loaded, "topics">, id: 5,
+  title: "blah"}]
+```
+
+
 ### Static
 
 #### CSS
