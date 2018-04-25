@@ -156,13 +156,17 @@ def create(conn, %{"topic" => topic}) do
 
 #### Routes
 
-`mix phoenix.routes`
+`mix phx.routes`
 
 ```
-mix phoenix.routes is deprecated. Use phx.routes instead.
- page_path  GET   /            Discuss.PageController :index
-topic_path  GET   /topics/new  Discuss.TopicController :new
-topic_path  POST  /topics      Discuss.TopicController :create
+topic_path  GET     /          Discuss.TopicController :index
+topic_path  GET     /:id/edit  Discuss.TopicController :edit
+topic_path  GET     /new       Discuss.TopicController :new
+topic_path  GET     /:id       Discuss.TopicController :show
+topic_path  POST    /          Discuss.TopicController :create
+topic_path  PATCH   /:id       Discuss.TopicController :update
+            PUT     /:id       Discuss.TopicController :update
+topic_path  DELETE  /:id       Discuss.TopicController :delete
 ```
 
 #### Ecto
@@ -226,7 +230,7 @@ SELECT t0."id", t0."title" FROM "topics" AS t0 []
 <%= link to: topic_path(@conn, :new), class: "xxx" do %>
 ```
 
-### Routes
+### Routes and namespacing
 
 Namespaces everything to `topics` and default routes
 
