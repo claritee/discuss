@@ -32,7 +32,6 @@ defmodule Discuss.TopicController do
   end
 
   def update(conn, %{"id" => topic_id, "topic" => topic}) do
-    old_topic = Repo.get(Topic, topic_id)
-    changeset = Topic.changeset(old_topic, topic)  
+    changeset = Repo.get(Topic, topic_id) |> Topic.changeset(topic)  
   end
 end
