@@ -172,6 +172,7 @@ INSERT INTO "topics" ("title") VALUES ($1) RETURNING "id" ["000"]
 ```
 
 Record:
+
 ```
 %Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:loaded, "topics">, id: 3,
  title: "000"}
