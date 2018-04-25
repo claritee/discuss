@@ -37,6 +37,8 @@ defmodule Discuss.Web do
 
       import Discuss.Router.Helpers
       import Discuss.Gettext
+
+      # Note: Helpers can be added here
     end
   end
 

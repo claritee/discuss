@@ -112,3 +112,16 @@ To rollback a migration
 ```
 mix ecto.rollback
 ```
+
+### Requests
+
+#### web.ex
+
+Contains helpers and modules for reuse e.g. Controller common helpers
+
+#### Request Objects
+
+Every function in a controller takes 2 args
+
+* conn - request object containing cookie info, headers, request path etc
+* params - request params
