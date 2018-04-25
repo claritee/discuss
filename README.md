@@ -148,3 +148,14 @@ Handling Form Input
   "_utf8" => "✓", "topic" => %{"title" => "dddd"}}
 ```
 ^ Need to use pattern matching to access the params for "topic"
+
+#### Routes
+
+`mix phoenix.routes`
+
+```
+mix phoenix.routes is deprecated. Use phx.routes instead.
+ page_path  GET   /            Discuss.PageController :index
+topic_path  GET   /topics/new  Discuss.TopicController :new
+topic_path  POST  /topics      Discuss.TopicController :create
+```
