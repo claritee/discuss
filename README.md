@@ -125,3 +125,18 @@ Every function in a controller takes 2 args
 
 * conn - request object containing cookie info, headers, request path etc
 * params - request params
+
+### Models
+
+#### Changesets
+
+````
+iex(1)> struct = %Discuss.Topic{}
+%Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:built, "topics">, id: nil,
+ title: nil}
+iex(2)> params = %{title: "blah"}
+%{title: "blah"}
+iex(3)> Discuss.Topic.changeset(struct, params)
+#Ecto.Changeset<action: nil, changes: %{title: "blah"}, errors: [],
+ data: #Discuss.Topic<>, valid?: true>
+````
