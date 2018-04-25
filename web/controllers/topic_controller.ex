@@ -31,7 +31,8 @@ defmodule Discuss.TopicController do
     render conn, "edit.html", changeset: changeset, topic: topic
   end
 
-  def update(conn, %{"topic" => topic}) do
-    
+  def update(conn, %{"id" => topic_id, "topic" => topic}) do
+    old_topic = Repo.get(Topic, topic_id)
+    changeset = Topic.changeset(old_topic, topic)  
   end
 end
