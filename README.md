@@ -177,3 +177,9 @@ Record:
 %Discuss.Topic{__meta__: #Ecto.Schema.Metadata<:loaded, "topics">, id: 3,
  title: "000"}
 ```
+
+### Static
+
+#### CSS
+
+`/static/css` - all files here get included on every view
