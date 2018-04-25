@@ -147,7 +147,12 @@ Handling Form Input
 %{"_csrf_token" => "xxx",
   "_utf8" => "✓", "topic" => %{"title" => "dddd"}}
 ```
+
 ^ Need to use pattern matching to access the params for "topic"
+
+```
+def create(conn, %{"topic" => topic}) do
+```
 
 #### Routes
 
@@ -213,4 +218,10 @@ SELECT t0."id", t0."title" FROM "topics" AS t0 []
 
 ```
 |> redirect(to: topic_path(conn, :index))
+```
+
+### Link to
+
+```
+<%= link to: topic_path(@conn, :new), class: "xxx" do %>
 ```
