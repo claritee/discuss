@@ -22,6 +22,14 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 ## Notes
 
+### Reference Repo
+
+https://github.com/StephenGrider/ElixirCode
+
+## Another reference
+
+https://elixircasts.io/user-authentication-with-phoenix
+
 ### Add new phoenix project
 
 ```
@@ -244,3 +252,5 @@ resources "/topics", TopicController
 ```
 http://localhost:4000/auth/github/callback
 ```
+
+Ueberauth issue with non-public email: https://github.com/ueberauth/ueberauth_github/issues/10
