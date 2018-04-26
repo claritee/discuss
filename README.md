@@ -255,6 +255,9 @@ http://localhost:4000/auth/github/callback
 
 Ueberauth issue with non-public email: https://github.com/ueberauth/ueberauth_github/issues/10
 
+Email being nil / primary email issue:
+https://github.com/ueberauth/ueberauth_github/issues/41
+
 ## Plugs
 
 Plugs are added in `router.ex`
