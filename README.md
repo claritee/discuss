@@ -257,12 +257,16 @@ Ueberauth issue with non-public email: https://github.com/ueberauth/ueberauth_gi
 
 ## Plugs
 
+Plugs are added in `router.ex`
+
 ### Module Plug
 
 * init function - takes `params`
 * call function - takes `conn` and `params` and returns `conn`
 
 `Call` function is called every time a request goes through the pipeline
+
+To read from conn `conn.assigns`, in this example, there will be a user struct `%{user: %Discuss.User{...}}`
 
 ### Function Plug
 
