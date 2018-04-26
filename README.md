@@ -80,6 +80,7 @@ Create:
 
 ```
 mix ecto.gen.migration add_topics
+mix ecto.gen.migration add_users
 ```
 
 * creating priv/repo/migrations
@@ -236,4 +237,10 @@ Namespaces everything to `topics` and default routes
 
 ```
 resources "/topics", TopicController
+```
+
+### OAuth
+
+```
+http://localhost:4000/auth/github/callback
 ```
