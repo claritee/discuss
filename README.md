@@ -254,3 +254,19 @@ http://localhost:4000/auth/github/callback
 ```
 
 Ueberauth issue with non-public email: https://github.com/ueberauth/ueberauth_github/issues/10
+
+## Plugs
+
+### Module Plug
+
+* init function - takes `params`
+* call function - takes `conn` and `params` and returns `conn`
+
+`Call` function is called every time a request goes through the pipeline
+
+### Function Plug
+
+Example: 
+
+* Controller function e.g. `new`
+
