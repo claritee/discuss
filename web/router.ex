@@ -21,7 +21,7 @@ defmodule Discuss.Router do
     # post "/topics",  TopicController, :create
     # get "/topics/:id/edit", TopicController, :edit 
     # put "/topics/:id/update", TopicController, :update
-    resources "/", TopicController
+    resources "/topics", TopicController
   end
 
   # Other scopes may use custom stacks.
