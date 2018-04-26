@@ -7,7 +7,11 @@ defmodule Discuss.AuthController do
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do
     user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "github"}
     User.changeset(%User{}, user_params)
-    insert_or_update_user(changeset)
+    signin(conn, changeset)
+  end
+
+  defp signin(conn, changeset) do
+        
   end
 
   defp insert_or_update_user(changeset) do
@@ -15,7 +19,7 @@ defmodule Discuss.AuthController do
       nil ->
         Repo.insert(changeset)
       user ->
-        {:ok, user}
+        {:ok, user} #TODO: should this call Repo.update??
     end
   end
 end
