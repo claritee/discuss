@@ -42,7 +42,8 @@ defmodule Discuss.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:ueberauth, "~> 0.5.0"},
-      {:ueberauth_github, "~> 0.7"}
+      # {:ueberauth_github, "~> 0.7"}
+      {:ueberauth_github, git: "git@github.com:claritee/ueberauth_github.git"}
     ]
   end
 
