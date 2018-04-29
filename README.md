@@ -135,6 +135,12 @@ Every function in a controller takes 2 args
 * conn - request object containing cookie info, headers, request path etc
 * params - request params
 
+Checking the "user" 
+
+```
+conn.assigns.user
+```
+
 ### Models
 
 #### Changesets
@@ -282,6 +288,12 @@ To read from conn `conn.assigns`, in this example, there will be a user struct `
 Example: 
 
 * Controller function e.g. `new`
+
+Only created in the context it's needed in e.g. in `TopicController`
+
+```
+plug :check_topic_owner when action in [:edit, :update, :delete]
+```
 
 ### Guard Clauses
 

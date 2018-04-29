@@ -5,6 +5,21 @@ defmodule Discuss.TopicController do
 
   # This plug will execute before any handler in the controller and only for these actions
   plug Discuss.Plugs.RequireAuth when action in [:new, :create, :edit, :update, :delete]
+  plug :check_topic_owner when action in [:edit, :update, :delete]
+
+  # Note: params does not contain data from form/router
+  def check_topic_owner(conn, _params) do
+    %{params: %{"id" => topic_id}} = conn # e.g. topics/edit/1
+
+    if Repo.get(Topic, topic_id).user_id == conn.assigns.user.id do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You cannot edit that")
+      |> redirect(to: topic_path(conn, :index))
+      |> halt()
+    end
+  end
 
   def index(conn, _params) do
     # IO.inspect(conn.assigns)
