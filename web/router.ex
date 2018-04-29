@@ -1,6 +1,10 @@
 defmodule Discuss.Router do
   use Discuss.Web, :router
 
+  # if Mix.env == :dev do
+  #   use Plug.Debugger, otp_app: :discuss
+  # end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -28,6 +32,7 @@ defmodule Discuss.Router do
   scope "/auth", Discuss do
     pipe_through :browser
 
+    get "/signout", AuthController, :signout
     get "/:provider", AuthController, :request #to handle different types of providers
     get "/:provider/callback", AuthController, :callback
   end
