@@ -315,6 +315,10 @@ end
 
 ## Relationships
 
+```
+NOTE: Phoenix - by default associations are not fetched out of the DB
+```
+
 Migration
 
 ```
@@ -339,4 +343,12 @@ schema "topics" do
   # fieldse
   belongs_to :user, Discuss.User
 end
+```
+
+### Build Association
+
+From Ecto:
+
+```
+build_assoc(post, :comments)
 ```
