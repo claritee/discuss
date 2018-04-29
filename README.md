@@ -196,6 +196,12 @@ Record:
  title: "000"}
 ```
 
+Get 1 Record:
+
+```
+Discuss.Repo.get(Discuss.Topic, 1)
+```
+
 Get Records:
 
 ```
@@ -304,5 +310,33 @@ defmodule TopicController do
 
   ...
 
+end
+```
+
+## Relationships
+
+Migration
+
+```
+alter table(:topics) do
+    add :user_id, references(:users)    
+end
+```
+
+User Model: `has_many`
+
+```
+schema "users" do
+  # fields
+  has_many :topics, Discuss.Topic
+end
+```
+
+Topic Model: `belongs_to`
+
+```
+schema "topics" do
+  # fieldse
+  belongs_to :user, Discuss.User
 end
 ```
