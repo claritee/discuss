@@ -277,3 +277,32 @@ Example:
 
 * Controller function e.g. `new`
 
+### Guard Clauses
+
+This plug will execute before any handler in the controller
+
+```
+defmodule TopicController do
+
+  ...
+
+  plug Discuss.Plugs.RequireAuth
+
+  ...
+
+end
+```
+
+To only execute on certain handlers (i.e. Guard Clause)
+
+```
+defmodule TopicController do
+
+  ...
+
+  plug Discuss.Plugs.RequireAuth when action in [:new, :create, :edit, :update, :delete]
+
+  ...
+
+end
+```
