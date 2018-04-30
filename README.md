@@ -143,6 +143,11 @@ conn.assigns.user
 
 ### Models
 
+Consists of
+
+* schema - define fields and relationships
+* changeset - fields that may change, validations
+
 #### Changesets
 
 ````
@@ -363,4 +368,10 @@ From Ecto:
 
 ```
 build_assoc(post, :comments)
+```
+## Sockets
+
+```
+web/static/sockets.js
+web/channels/user_socket.ex
 ```

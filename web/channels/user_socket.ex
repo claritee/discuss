@@ -3,6 +3,7 @@ defmodule Discuss.UserSocket do
 
   ## Channels
   # channel "room:*", Discuss.RoomChannel
+  channel "comments:*", Discuss.CommentsChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -20,6 +21,7 @@ defmodule Discuss.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   def connect(_params, socket) do
+    # this is called when JS client connects
     {:ok, socket}
   end
 
