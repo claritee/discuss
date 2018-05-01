@@ -3,8 +3,8 @@ defmodule Discuss.Comment do
 
   schema "comments" do
     field :content, :string
-    belongs_to :user, Discuss.user
-    belongs_to :topic, Discuss.topic
+    belongs_to :user, Discuss.User
+    belongs_to :topic, Discuss.Topic
     timestamps()    
   end
 
