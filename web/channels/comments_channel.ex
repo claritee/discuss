@@ -5,6 +5,6 @@ defmodule Discuss.CommentsChannel do
 		
 	end
 
-	def handle_in()
+	def handle_in() do
 	end
 end
