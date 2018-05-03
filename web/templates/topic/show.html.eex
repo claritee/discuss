@@ -1,3 +1,12 @@
 <%= @topic.title %>
 
-<button>ping!</button
+<%# <button>ping!</button %>
+
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+		window.createSocket(<%= @topic.id %>)
+	});
+	// only boot up the app when this template runs
+	// socket is only created when on the show page on the show template
+	window.createSocket(<%= @topic.id %>)
+</script>

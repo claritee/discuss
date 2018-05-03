@@ -55,12 +55,19 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect() //connects to backend server
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("comments:1", {}) //default channel
-channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
+const createSocket = (topicId) => {
+	let channel = socket.channel(`comments:${topicId}`, {}) //default channel
+	channel.join()
+	  .receive("ok", resp => { console.log("Joined successfully", resp) })
+	  .receive("error", resp => { console.log("Unable to join", resp) })
 
-document.querySelector('button').addEventListener('click', function() {
-  channel.push('comment:hello', {hi: 'there!'})
-});
-export default socket
+	// Note: leaving this here as a way to test the socket
+	// document.querySelector('button').addEventListener('click', function() {
+	//   channel.push('comment:hello', {hi: 'there!'})
+	// });
+}
+
+// NOTE: previously there
+//export default socket
+
+window.createSocket = createSocket; //create socket and join the given channel
