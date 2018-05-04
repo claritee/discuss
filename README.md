@@ -362,6 +362,14 @@ schema "topics" do
 end
 ```
 
+### Return associated data
+
+```
+topic = Topic
+      |> Repo.get(topic_id)
+      |> Repo.preload(:comments)
+```
+
 ### Build Association
 
 From Ecto:

@@ -59,7 +59,7 @@ const createSocket = (topicId) => {
 	let channel = socket.channel(`comments:${topicId}`, {}); //default channel
 	channel.join()
 	  .receive("ok", resp => {
-	  	console.log("Joined successfully", resp.comments);
+	  	renderComments(resp.comments);
 	  })
 	  .receive("error", resp => {
 	  	console.log("Unable to join", resp);
@@ -74,6 +74,17 @@ const createSocket = (topicId) => {
     const content = document.querySelector('textarea').value;
     channel.push('comment:add', { content: content });
   });
+}
+
+function renderComments(comments) {
+	const renderedComments = comments.map(comment => {
+    return `
+      <li class="collection-item">
+        ${comment.content}
+      </li>
+    `;
+  });
+  document.querySelector('.collection').innerHTML = renderedComments.join('')
 }
 
 // NOTE: previously there
