@@ -386,6 +386,14 @@ web/channels/user_socket.ex
 
 Create Channel with a `join` and `handle_in` function
 
+### Broadcasting
+Calling `broadcast` - This will broadcast message to subscribers
+
+```
+broadcast!(socket, event_name, data)
+```
+
+
 ## Other Stuff
 
 ### Pattern matching in function parameters

@@ -70,6 +70,9 @@ const createSocket = (topicId) => {
 	//   channel.push('comment:hello', {hi: 'there!'})
 	// });
 
+  //subscribe to this channel
+  channel.on(`comments:${topicId}:new`, renderComment);
+
   document.querySelector('button').addEventListener('click', () => {
     const content = document.querySelector('textarea').value;
     channel.push('comment:add', { content: content });
@@ -78,15 +81,23 @@ const createSocket = (topicId) => {
 
 function renderComments(comments) {
 	const renderedComments = comments.map(comment => {
-    return `
-      <li class="collection-item">
-        ${comment.content}
-      </li>
-    `;
+    return commentTemplate(comment);
   });
   document.querySelector('.collection').innerHTML = renderedComments.join('')
 }
 
+function renderComment(event) {
+	const renderedComment = commentTemplate(event.comment)
+	document.querySelector('.collection').innerHTML += renderedComment;
+}
+
+function commentTemplate(comment) {
+	return `
+      <li class="collection-item">
+        ${comment.content}
+      </li>
+    `
+}
 // NOTE: previously there
 //export default socket
 
