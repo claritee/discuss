@@ -1,16 +1,38 @@
 defmodule Discuss.CommentsChannel do
 	use Discuss.Web, :channel
 
-	def join(name, _params, socket) do
-    # IO.puts("====================")
+  alias Discuss.{Topic, Comment}
+
+	def join("comments:" <> topic_id, _params, socket) do
+    IO.puts("====================")
     # IO.puts(name) # ID of the topic "comments:1"
-    {:ok, %{hey: "there"}, socket}
+    topic_id = String.to_integer(topic_id)
+    topic = Repo.get(Topic, topic_id)
+
+    {:ok, %{}, assign(socket, :topic, topic)}
 	end
 
-	def handle_in(name, message, socket) do
+  # Called when something is pushed to the channel
+  # socket object in channel is like the "conn" object in the Controller
+  # To get access to variables: socket.assigns
+	def handle_in(name, %{"content" => content}, socket) do
     # IO.puts(">>>>>-------------------")
     # IO.puts(name)
     # IO.inspect(message)
-    {:reply, :ok, socket}
+
+    # Message: %{"content" => "comment!"}
+
+    topic = socket.assigns.topic
+
+    changeset = topic
+      |> build_assoc(:comments)
+      |> Comment.changeset(%{content: content})
+
+    case Repo.insert(changeset) do
+      {:ok, comment} ->
+        {:reply, :ok, socket}
+      {:error, _reason} ->
+        {:reply, {:error, %{errors: changeset}}, socket}
+    end
 	end
 end
