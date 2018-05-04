@@ -375,3 +375,11 @@ build_assoc(post, :comments)
 web/static/sockets.js
 web/channels/user_socket.ex
 ```
+
+Create Channel with a `join` and `handle_in` function
+
+## Other Stuff
+
+### Pattern matching in function parameters
+
+`def join("comments:" <> topic_id, _params, socket) do`
