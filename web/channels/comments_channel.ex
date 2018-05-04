@@ -7,9 +7,11 @@ defmodule Discuss.CommentsChannel do
     IO.puts("====================")
     # IO.puts(name) # ID of the topic "comments:1"
     topic_id = String.to_integer(topic_id)
-    topic = Repo.get(Topic, topic_id)
+    topic = Topic
+      |> Repo.get(topic_id)
+      |> Repo.preload(:comments)
 
-    {:ok, %{}, assign(socket, :topic, topic)}
+    {:ok, %{comments: topic.comments}, assign(socket, :topic, topic)}
 	end
 
   # Called when something is pushed to the channel

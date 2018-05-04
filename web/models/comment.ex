@@ -1,6 +1,9 @@
 defmodule Discuss.Comment do
 	use Discuss.Web, :model
 
+  #only convert the content field to JSON
+  @derive {Poison.Encoder, only: [:content]}
+
   schema "comments" do
     field :content, :string
     belongs_to :user, Discuss.User
