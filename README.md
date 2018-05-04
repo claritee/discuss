@@ -377,6 +377,23 @@ From Ecto:
 ```
 build_assoc(post, :comments)
 ```
+
+This can only be called once
+
+```
+changeset = topic
+      |> build_assoc(:comments) #this only builds one association, cannot be called multiple times
+      |> Comment.changeset(%{content: content})
+```
+
+To associate to more than one relationship, need to pass in another arg
+
+```
+changeset = topic
+      |> build_assoc(:comments, user_id: user_id)
+      |> Comment.changeset(%{content: content})
+```
+
 ## Sockets
 
 ```
@@ -384,7 +401,15 @@ web/static/sockets.js
 web/channels/user_socket.ex
 ```
 
+### Channel
 Create Channel with a `join` and `handle_in` function
+
+### Sockets
+
+Contains the channel
+
+* `connect` - Used to connect to by the frontend
+
 
 ### Broadcasting
 Calling `broadcast` - This will broadcast message to subscribers
@@ -393,6 +418,12 @@ Calling `broadcast` - This will broadcast message to subscribers
 broadcast!(socket, event_name, data)
 ```
 
+### User Token
+
+Generated in app.html.eex and passed to the BE
+
+* `Phoenix.Token.sign` - generate the token
+* `Phoenix.Token.verify` - verify the token
 
 ## Other Stuff
 
