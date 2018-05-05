@@ -20,16 +20,20 @@ defmodule Discuss.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(%{"token" => token}, socket) do
+  def connect(params, socket) do
     # this is called when JS client connects
     # key of params is a String
+
+    %{"token" => token} = params
     IO.puts "====================="
+    IO.inspect(params)
     IO.puts token
-    case Phoenix.Token.verify(token, "key", token) do
+    case Phoenix.Token.verify(socket, "key", token) do
       {:ok, user_id} ->
         # user id will be added on the socket - socket.assigns.user_id will be available
         {:ok, assign(socket, :user_id, user_id)}
-      {:error, _error} ->
+      {:error, error} ->
+        IO.puts error
         :error
     end
   end
