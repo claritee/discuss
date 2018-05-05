@@ -9,7 +9,7 @@ defmodule Discuss.CommentsChannel do
     topic_id = String.to_integer(topic_id)
     topic = Topic
       |> Repo.get(topic_id)
-      |> Repo.preload(:comments)
+      |> Repo.preload(comments: [:user]) #loading association for the user the comment belongs to
 
     {:ok, %{comments: topic.comments}, assign(socket, :topic, topic)}
 	end

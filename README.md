@@ -394,6 +394,13 @@ changeset = topic
       |> Comment.changeset(%{content: content})
 ```
 
+To load nested association
+```
+topic = Topic
+      |> Repo.get(topic_id)
+      |> Repo.preload(:comments: [:user]) #loading association for the user the comment belongs to
+```
+
 ## Sockets
 
 ```
@@ -430,3 +437,11 @@ Generated in app.html.eex and passed to the BE
 ### Pattern matching in function parameters
 
 `def join("comments:" <> topic_id, _params, socket) do`
+
+### Including fields to be deserialized to JSON
+
+E.g. in `Discuss.User`
+
+```@derive {Poison.Encoder, only: [:email]}```
+
+
